@@ -1,0 +1,27 @@
+@use "../../../utils/" as *;
+
+.popular-blog {
+  i {
+    color: $clr_primary_main;
+    fill: currentColor;
+  }
+  .popular-post {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    gap: $s_3 0;
+
+    span.number {
+      @include d_flex(column, start, center, nowrap, false, 0);
+      @include fs("title-s");
+      color: $clr_natural_4;
+      height: 100%;
+      background-color: $clr_bg_paper;
+    }
+    .blog-posts {
+      .paragraph {
+        @include fs("body-s");
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@use "../../../utils/" as *;
+.blog-page {
+  .banner {
+    height: 50vh;
+    background-position: top;
+    background-size: 100%;
+    @include d_flex(column, flex-end, center, nowrap, false, $s_1);
+    background-repeat: no-repeat;
+    .banner_text {
+      background-color: rgba(0, 0, 0, 0.5);
+      margin-bottom: $s_6;
+      @include d_flex(column, center, center, nowrap, false, $s_1);
+      color: $clr_primary_light;
+      padding: $s_5;
+      width: 90%;
+      @include mq("md") {
+        background-color: $clr_secondary_dark;
+        width: 100%;
+      }
+    }
+
+    .paragraph {
+      width: 98%;
+    }
+    .swiper-slide {
+      padding-right: 15%;
+      h2 {
+        padding: $s_5 0;
+      }
+    }
+
+    .swiper-pagination {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      left: auto;
+      right: 5%;
+      width: 4%;
+      bottom: 4vh;
+      @include mq("md") {
+        display: block;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+      }
+      .swiper-pagination-bullet {
+        width: $s_6;
+        height: $s_6;
+        background-color: $clr_secondary_light;
+        border-radius: 0;
+        margin: $s_1;
+        z-index: 5;
+        @include mq("md") {
+          width: $s_10;
+        }
+      }
+      .swiper-pagination-bullet-active {
+        background-color: $clr_primary_main;
+      }
+    }
+    @include mq("md") {
+      height: 60vh;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@use "../utils/index" as *;
+.submit {
+  float: right;
+  padding: $s_3 $s_6;
+  background-color: $clr_primary_main;
+  @include fs("caption");
+  i {
+    @include fs("caption");
+  }
+
+  @include mq("md") {
+    width: 100%;
+    @include d_flex($a_i: center, $gap: $s_3);
+  }
+}
+button{
+  
+}

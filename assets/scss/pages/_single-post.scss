@@ -1,0 +1,117 @@
+@use "../utils" as *;
+
+main.single-post-page {
+  .post-image img {
+    width: 100%;
+    height: 80vh;
+    @include mq("md") {
+      height: 40vh;
+    }
+  }
+  .single-blog {
+    @include d_flex(row-reverse, start, start, nowrap, false, $s_4);
+    @include mq("md") {
+      flex-direction: column-reverse;
+    }
+    .post-main {
+      width: 70%;
+      @include mq("md") {
+        width: 100%;
+      }
+
+      .postmeta {
+        @include d_flex($j_c: space-between, $even_column: false);
+        @include fs("body-s");
+        color: $clr_secondary_light;
+        div {
+          @include d_flex(row, start, start, nowrap, false, $s_1);
+        }
+        @include mq("md") {
+          flex-wrap: nowrap;
+          @include fs("caption");
+        }
+      }
+      //content
+      .post-content {
+        width: 100%;
+        margin-bottom: $s_6;
+        @include fs("body");
+        h4 {
+          @include fs("h2");
+        }
+        img {
+          width: 100%;
+          @include mq("md") {
+            padding: 0 !important;
+            height: 40vh;
+          }
+        }
+        blockquote {
+          color: $clr_secondary_light;
+          @include make_icon("\eb2e");
+          @include d_flex(row, center, center, nowrap, false, $s_6);
+          padding: $s_4 0;
+          p {
+            padding: $s_6;
+            border-left: $b_3;
+            margin: $s_4 0;
+            @include mq("md") {
+              padding: $s_3;
+              margin: 0;
+            }
+          }
+          @include mq("md") {
+            @include d_flex(column, center, start, nowrap, false, 0);
+          }
+        }
+        blockquote::before {
+          @include fs("body");
+          font-weight: 800;
+          color: $clr_primary_text;
+          @include mq("md") {
+            @include fs("title-s");
+          }
+        }
+
+        p {
+          text-align: justify;
+          @include mq("md") {
+            @include fs("body-s");
+          }
+        }
+      } //*content
+    } //*post-main
+  } //*single-blog
+
+  .hide ul.cat {
+    @include d_flex(row-reverse, flex-start, start, wrap, false, $s_4);
+    padding: $s_5 0;
+    :active li {
+      background-color: $clr_primary_text;
+      color: $clr_primary_main;
+    }
+    li {
+      background-color: $clr_bg_paper;
+      padding: $s_3;
+      line-height: $s_10;
+      margin-bottom: $s_5;
+    }
+    li.current-cat {
+      background-color: $clr_primary_text;
+      color: $clr_primary_main;
+      @include make_icon("\e9a6");
+    }
+    li.current-cat::before {
+      color: $clr_primary_main;
+    }
+  }
+  h3 {
+    @include mq("md") {
+      margin: $s_2 0;
+    }
+  }
+  @include mq("md") {
+    flex-direction: column;
+    align-items: stretch;
+  }
+} //*main

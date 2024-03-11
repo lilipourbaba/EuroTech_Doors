@@ -1,0 +1,58 @@
+@use "../../../utils/" as *;
+
+.blog-main {
+  width: 70%;
+  .blog-section {
+    .blog-post {
+      @include d_flex(row, start, center, nowrap, false, $s_3);
+      margin-bottom: $s_8;
+      img {
+        height: 35vh;
+        width: auto;
+        aspect-ratio: 1 / 1;
+        @include mq("md") {
+          height: 18vh;
+        }
+      }
+      .post-detail {
+        h2 {
+          @include mq("md") {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+        }
+      }
+      .paragraph {
+        @include fs("body");
+        -webkit-line-clamp: 2;
+      }
+      .postmeta {
+        @include fs("body-s");
+        @include d_flex(row, start, start, nowrap, false, $s_6);
+        padding: $s_6 0;
+        color: $clr_secondary_light;
+        i {
+          color: $clr_secondary_dark;
+        }
+        .meta {
+          @include d_flex(row, start, center, nowrap, false, $s_2);
+        }
+        @include mq("md") {
+          padding: 0px;
+          flex-direction: column-reverse;
+          gap: 0;
+          @include fs("caption");
+        }
+      }
+      @include mq("md") {
+        background-color: $clr_bg_paper;
+        padding: $s_5;
+      }
+    }
+  }
+  @include mq("md") {
+    width: 100%;
+  }
+}

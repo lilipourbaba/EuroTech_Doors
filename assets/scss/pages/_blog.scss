@@ -1,0 +1,62 @@
+@use "../utils/" as *;
+.blog-page {
+  .blog-archive {
+    @include d_flex(row-reverse, start, start, nowrap, false, $s_4);
+
+    li:hover,
+    .blog-main {
+      .blog-head {
+        @include d_flex($j_c: space-between);
+        @include mq("md") {
+          flex-direction: column-reverse;
+          align-items: start;
+        }
+        ul {
+          display: -webkit-box;
+          padding: $s_3 0;
+          gap: $s_3;
+          overflow: auto;
+          max-width: 100%;
+          li {
+            border-color: rgba(0, 0, 0, 0);
+            transition: all ease-in-out 0.6s;
+            @include fs("body");
+            min-height: 50px;
+            i {
+              color: $clr_primary_dark;
+            }
+            @include mq("md") {
+              background-color: $clr_bg_paper;
+              padding: $s_4;
+            }
+          }
+          li.current-cat {
+            border-bottom: $b_1;
+            @include make_icon("\e9a6");
+          }
+          li.current-cat::before {
+            color: $clr_primary_main;
+          }
+        }
+      }
+    }
+    .pagination {
+      margin-bottom: $s_7;
+      .page-numbers {
+        border-bottom: $b_4;
+        padding: $s_2;
+      }
+      .current {
+        border-color: $clr_primary_dark;
+      }
+    }
+  }
+
+  @include mq("md") {
+    .blog-archive {
+      flex-direction: column-reverse;
+      .postmeta div {
+      }
+    }
+  }
+}

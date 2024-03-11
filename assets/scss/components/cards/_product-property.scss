@@ -1,0 +1,26 @@
+@use "../../utils/" as *;
+.Property {
+  .product-properties {
+    padding: $s_5 0;
+    border-bottom: $b_1;
+  }
+  .product-tab {
+    @include d_flex(row, start, start, nowrap, true, $s_2);
+    padding-top: $s_5;
+    button {
+      padding: $s_3;
+      width: 100%;
+      border: 0;
+      margin-bottom: $s_2;
+    }
+
+    .Variable-name button {
+      background-color: $clr_secondary_light;
+      color: $clr_natural_1;
+    }
+    .Variable-value button {
+      background-color: $clr_bg_paper;
+      color: $clr_secondary_light;
+    }
+  }
+}

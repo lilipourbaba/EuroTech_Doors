@@ -1,0 +1,18 @@
+@use "../../utils/" as *;
+.like-product {
+  @include d_flex($gap: $s_4);
+}
+.product-card {
+  @include d_flex(row, space-between, center, nowrap, true, 0);
+  img {
+    width: 100%;
+  }
+  .detail {
+    display: flex;
+    i {
+      background-color: $clr_natural_9;
+      color: $clr_natural_1;
+      padding: $s_2;
+    }
+  }
+}

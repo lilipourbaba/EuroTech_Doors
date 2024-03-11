@@ -1,0 +1,18 @@
+@use "../../utils/" as *;
+
+.search-box {
+  width: 30%;
+  form {
+    @include d_flex(row, start, center, nowrap, false, $s_4);
+    background-color: $clr_bg_paper;
+    padding: $s_3 $s_4;
+    button {
+      background-color: $clr_primary_main;
+      padding: $s_4;
+      border: 0;
+    }
+    ::placeholder {
+      color: $clr_secondary_light;
+    }
+  }
+}

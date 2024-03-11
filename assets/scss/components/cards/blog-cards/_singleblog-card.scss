@@ -1,0 +1,29 @@
+@use "../../../utils/" as *;
+.recent-posts {
+  .blogs {
+    .blog-posts {
+      @include d_flex(row, start, center, nowrap, false, $s_3);
+      margin-bottom: $s_8;
+    }
+    .post-main {
+      width: 70%;
+    }
+    img {
+      height: 15vh;
+      width: 30%;
+      aspect-ratio: auto 120 / 95;
+    }
+    .postmeta {
+      display: block;
+      @include fs("caption");
+      color: $clr_secondary_light;
+      div {
+        @include d_flex(row, start, center, nowrap, false, $s_5);
+      }
+    }
+    .post-detail {
+      @include d_flex(column, start, start, nowrap, false, $s_3);
+      width: 70%;
+    }
+  }
+}

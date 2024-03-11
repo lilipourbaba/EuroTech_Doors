@@ -1,0 +1,132 @@
+@use "./functions" as *;
+@use "./variables" as *;
+
+@mixin mq($viewport: "xs", $type: screen) {
+  $window_width: map-get(
+    (
+      "xs": 320px,
+      "sm": 480px,
+      "md": 768px,
+      "lg": 992px,
+      "xl": 1200px,
+    ),
+    $viewport
+  );
+
+  @media #{$type} and (max-width: #{$window_width}) {
+    @content;
+  }
+}
+
+@mixin fs($type: "body") {
+  $font_map: map-get(
+    (
+      "title": make_font_list(80px, 600, 70px),
+      "title-s": make_font_list(60px, 500, 90px),
+      "h1": make_font_list(32px, 500, 48px),
+      "h2": make_font_list(24px, 500, 44.5px),
+      "h3": make_font_list(20px, 500, 34px),
+      "h4": make_font_list(16px, 500, 28px),
+      "body": make_font_list(20px, 400, 36px),
+      "body-s": make_font_list(16px, 400, 32px),
+      "caption": make_font_list(12px, 500, 20px),
+    ),
+    $type
+  );
+
+  @if ($font_map) {
+    font-size: map-get($font_map, "font-size");
+    font-weight: map-get($font_map, "font-weight");
+    line-height: map-get($font_map, "line-height");
+  } @else {
+    @error "You'r input #{$type} is wrong";
+  }
+}
+
+@mixin max_line($line) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+//#region pseudo
+@mixin pseudo(
+  $inset: 0 0 auto auto,
+  $square: PxToRem(4),
+  $z-index: 1,
+  $el: after,
+  $content: "",
+  $position: absolute
+) {
+  position: relative;
+  isolation: isolate;
+
+  &::#{$el} {
+    content: $content;
+    position: $position;
+    inset: $inset;
+    width: $square;
+    height: $square;
+    z-index: $z-index;
+    @content;
+  }
+}
+//#endregion
+
+@mixin make_icon($content) {
+  &::before {
+    content: $content;
+    font-family: "iconsax" !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @content;
+  }
+}
+@mixin icon($content) {
+  &::after {
+    content: $content;
+    font-family: "iconsax" !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @content;
+  }
+}
+//#region d-flex
+@mixin d_flex(
+  $dir: row,
+  $j_c: start,
+  $a_i: start,
+  $wrap: nowrap,
+  $even_column: true,
+  $gap: 0
+) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $j_c;
+  align-items: $a_i;
+  flex-wrap: $wrap;
+  gap: $gap;
+
+  @if ($even_column) {
+    > * {
+      flex: 1;
+    }
+  }
+}
+
+//#endregion

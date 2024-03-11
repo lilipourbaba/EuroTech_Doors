@@ -1,0 +1,20 @@
+@use "../utils/" as *;
+.sidebar {
+  width: 37%;
+  @include mq("md") {
+    width: 100%;
+    border-bottom: $b_3;
+  }
+  h3 {
+    margin: $s_3 0;
+  }
+  .today-pic {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: $s_4;
+    img {
+      width: 100%;
+    }
+  }
+}

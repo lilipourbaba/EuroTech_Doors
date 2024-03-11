@@ -1,0 +1,69 @@
+@use "../utils/" as *;
+.product {
+  .banner:hover {
+    background-size: 110%;
+    transition: ease-in-out 5s;
+  }
+  .banner {
+    @include d_flex($a_i: flex-end);
+    width: 100%;
+    height: 70vh;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: ease-in-out 5s;
+    .gallery {
+      @include d_flex(row, space-between, flex-end, nowrap, false, 0);
+      padding: $s_10;
+      width: 100%;
+      img {
+        width: 20%;
+        aspect-ratio: 1/1;
+        margin-right: $s_3;
+        transition: transform 2s;
+      }
+      img:hover {
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.5);
+      }
+      .hover-zoom {
+        background-color: $clr_natural_9;
+        padding: $s_3;
+        text-align: right;
+        color: $clr_natural_1;
+        opacity: 0.5;
+        margin: $s_2;
+        @include make_icon("\e921");
+      }
+    }
+  }
+  .product-title {
+    margin: $s_6 0;
+    @include d_flex(row, space-between, center, nowrap, false, 0);
+    .titr {
+      @include d_flex($even_column: false, $a_i: center);
+      span {
+        color: $clr_secondary_light;
+      }
+    }
+    .score i {
+      color: $clr_primary_dark;
+      fill: $clr_primary_dark;
+    }
+  }
+  .product-pagination {
+    @include d_flex(row, space-between, center, nowrap, false, 0);
+    span {
+      padding: $s_3;
+      background-color: $clr_secondary_dark;
+      color: $clr_natural_1;
+      margin: $s_5 0;
+    }
+  }
+}
+#tab4Content,
+#tab2Content,
+#tab3Content {
+  display: none;
+}

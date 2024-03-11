@@ -1,0 +1,146 @@
+@use "./functions" as *;
+
+//#region colors
+$clr_primary_light: #fff9eb;
+$clr_primary_main: #feb800;
+$clr_primary_dark: #d79b00;
+$clr_primary_text: #000000;
+
+$clr_secondary_dark: #000000;
+$clr_secondary_light: #6b6b6b;
+$clr_secondary_text: #e5e3e3;
+
+$clr_bg_default: #f5f4f4;
+$clr_bg_paper: #ececec;
+
+$clr_accent_dark: #1d1616;
+$clr_accent_main: #ff2727;
+$clr_accent_light: #ffa2a2;
+$clr_accent_text: #fffbfb;
+
+$clr_success_light: #4caf50;
+$clr_success_main: #2e7d32;
+$clr_success_dark: #1b5e20;
+
+$clr_error_light: #ef5350;
+$clr_error_main: #d32f2f;
+$clr_error_dark: #c62828;
+
+$clr_warning_light: #ff9800;
+$clr_warning_main: #ed6c02;
+$clr_warning_dark: #e65100;
+
+$clr_info_light: #03a9f4;
+$clr_info_main: #0288d1;
+$clr_info_dark: #01579b;
+
+$clr_text_dark: #1e1e1e;
+$clr_text_main: #505050;
+$clr_text_light: #969696;
+$clr_text_contrast: #ffffff;
+
+$clr_natural_1: #ffffff;
+$clr_natural_2: #eaeaea;
+$clr_natural_3: #dddddd;
+$clr_natural_4: #c5c5c5;
+$clr_natural_5: #acacac;
+$clr_natural_6: #949494;
+$clr_natural_7: #626262;
+$clr_natural_8: #313131;
+$clr_natural_9: #000000;
+
+//#endregion
+
+//#region spacing
+$s_1: px_to_rem(4);
+$s_2: px_to_rem(8);
+$s_3: px_to_rem(12);
+$s_4: px_to_rem(16);
+$s_5: px_to_rem(20);
+$s_6: px_to_rem(24);
+$s_7: px_to_rem(28);
+$s_8: px_to_rem(32);
+$s_9: px_to_rem(36);
+$s_10: px_to_rem(40);
+$s_11: px_to_rem(44);
+$s_12: px_to_rem(48);
+$s_13: px_to_rem(60);
+$s_14: px_to_rem(80);
+//#endregion
+
+//#region radius
+$r_1: px_to_rem(8);
+$r_2: px_to_rem(16);
+$r_3: px_to_rem(24);
+$r_4: 50%;
+//#endregion
+
+//#region borders
+$b_1: 1px solid $clr_primary_main;
+$b_2: 1px solid $clr_primary_light;
+$b_3: 1px solid $clr_secondary_light;
+$b_4: 2px solid $clr_bg_paper;
+
+//#endregion
+
+//#region transition
+$t_1: all 0.4s ease-in-out;
+
+//#endregion
+
+//#region shadows
+
+//#endregion
+
+//#region colors css
+:root {
+  --clr-primary-light: #{$clr_primary_light};
+  --clr-primary-main: #{$clr_primary_main};
+  --clr-primary-dark: #{$clr_primary_dark};
+  --clr-primary-text-contrast: #{$clr_primary_text};
+
+  --clr-secondary-dark: #{$clr_secondary_dark};
+  --clr-secondary-text-contrast: #{$clr_secondary_text};
+
+  --clr-accent-dark: #{$clr_accent_dark};
+  --clr-accent-text-contrast: #{$clr_accent_text};
+
+  --clr-bg-default: #{$clr_bg_default};
+  --clr-bg-paper: #{$clr_bg_paper};
+}
+
+:root {
+  --clr-error-light: #{$clr_error_light};
+  --clr-error-main: #{$clr_error_main};
+  --clr-error-dark: #{$clr_error_dark};
+
+  --clr-warning-light: #{$clr_warning_light};
+  --clr-warning-main: #{$clr_warning_main};
+  --clr-warning-dark: #{$clr_warning_dark};
+
+  --clr-success-light: #{$clr_success_light};
+  --clr-success-main: #{$clr_success_main};
+  --clr-success-dark: #{$clr_success_dark};
+
+  --clr-information-light: #{$clr_info_light};
+  --clr-information-main: #{$clr_info_main};
+  --clr-information-dark: #{$clr_info_dark};
+}
+
+:root {
+  --clr-text-dark: #{$clr_text_dark};
+  --clr-text-main: #{$clr_text_main};
+  --clr-text-light: #{$clr_text_light};
+  --clr-text-contrast: #{$clr_text_contrast};
+
+  --clr-natural-1: #{$clr_natural_1};
+  --clr-natural-2: #{$clr_natural_2};
+  --clr-natural-3: #{$clr_natural_3};
+  --clr-natural-4: #{$clr_natural_4};
+  --clr-natural-5: #{$clr_natural_5};
+  --clr-natural-6: #{$clr_natural_6};
+  --clr-natural-7: #{$clr_natural_7};
+  --clr-natural-8: #{$clr_natural_8};
+  --clr-natural-9: #{$clr_natural_9};
+}
+//#endregion
