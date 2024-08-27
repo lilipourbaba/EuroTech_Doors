@@ -1,0 +1,56 @@
+@use "../utils/" as *;
+
+.contact-us {
+  .contact-hero {
+    height: auto;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-block: 10rem ;
+
+    .container {
+      @include d_flex(row, space-between, start, nowrap, true, 0);
+      color: $clr_natural_1;
+
+      p {
+        @include fs("title-s");
+        max-width: 40%;
+        @include mq("lg") {
+          max-width: 100%;
+          @include fs("h2");
+        }
+      }
+      .contact {
+        max-width: 40%;
+        h2 {
+          margin-bottom: $s_6;
+        }
+        @include mq("lg") {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+      @include mq("lg") {
+        gap: $s_2;
+      }
+      @include mq("lg") {
+        flex-direction: column;
+        gap: $s_2;
+        $even_column: true;
+        margin-top: $s_5;
+      }
+    }
+          @include mq("lg") {
+
+        padding-block:4rem;
+          }
+  } //banner
+}
+.toastify {
+  position: fixed;
+  width: 250px;
+  top:50% !important;
+  right: 0;
+  padding:10px;
+  color:white;
+}

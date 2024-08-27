@@ -1,19 +1,26 @@
 @use "./functions" as *;
 @use "./variables" as *;
 
+$viewports: (
+  "xs": 320px,
+  "sm": 480px,
+  "md": 890px,
+  "lg": 992px,
+  "xl": 1200px,
+);
+
 @mixin mq($viewport: "xs", $type: screen) {
-  $window_width: map-get(
-    (
-      "xs": 320px,
-      "sm": 480px,
-      "md": 768px,
-      "lg": 992px,
-      "xl": 1200px,
-    ),
-    $viewport
-  );
+  $window_width: map-get($viewports, $viewport);
 
   @media #{$type} and (max-width: #{$window_width}) {
+    @content;
+  }
+}
+
+@mixin mq_min($viewport: "xs", $type: screen) {
+  $window_width: map-get($viewports, $viewport);
+
+  @media #{$type} and (min-width: #{$window_width + .2}) {
     @content;
   }
 }
@@ -24,9 +31,9 @@
       "title": make_font_list(80px, 600, 70px),
       "title-s": make_font_list(60px, 500, 90px),
       "h1": make_font_list(32px, 500, 48px),
-      "h2": make_font_list(24px, 500, 44.5px),
+      "h2": make_font_list(24px, 500, 30.5px),
       "h3": make_font_list(20px, 500, 34px),
-      "h4": make_font_list(16px, 500, 28px),
+      "h4": make_font_list(16px, 500, 24px),
       "body": make_font_list(20px, 400, 36px),
       "body-s": make_font_list(16px, 400, 32px),
       "caption": make_font_list(12px, 500, 20px),
@@ -72,6 +79,7 @@
     @content;
   }
 }
+
 //#endregion
 
 @mixin make_icon($content) {
@@ -90,7 +98,8 @@
     @content;
   }
 }
-@mixin icon($content) {
+
+@mixin make_icon_after($content) {
   &::after {
     content: $content;
     font-family: "iconsax" !important;
@@ -106,13 +115,15 @@
     @content;
   }
 }
+
 //#region d-flex
+
 @mixin d_flex(
   $dir: row,
   $j_c: start,
   $a_i: start,
   $wrap: nowrap,
-  $even_column: true,
+  $even_column: false,
   $gap: 0
 ) {
   display: flex;
@@ -127,6 +138,12 @@
       flex: 1;
     }
   }
+}
+
+@mixin inline-text() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 //#endregion

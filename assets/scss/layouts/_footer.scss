@@ -1,1 +1,88 @@
-@use '../utils/' as *;
+@use "../utils/" as *;
+
+.site-footer {
+  position: relative;
+  padding: $s_6 $s_10;
+  .footer-wrapper {
+    padding: $s_10 $s_5 $s_14 $s_5;
+    background-color: $clr_secondary_dark;
+    @include d_flex(row, stretch, flex-start, wrap, true, $s_6);
+    .footer-address {
+      @include mq("md") {
+        min-width: 100%;
+      }
+    }
+    .footer-col {
+      @include d_flex(column, flex-start, stretch, nowrap, false, $s_1);
+      &-title {
+        color: $clr_secondary_light;
+        margin-bottom: $s_2;
+      }
+      > div {
+        color: $clr_text_contrast;
+      }
+      &:not(:nth-child(5)) {
+        // white-space: nowrap;
+      }
+      .footer-address {
+        min-width: 100%;
+      }
+      .icon-social-media {
+        @include d_flex(row, flex-start, stretch, nowrap, false, $s_2);
+        > a {
+          background-color: $clr_primary_light;
+          width: px_to_rem(32);
+          height: px_to_rem(32);
+          @include d_flex(row, center, center);
+          > div {
+            @include d_flex(row, center, center);
+            img {
+              object-fit: contain;
+              max-height: $s_5;
+            }
+          }
+        }
+      }
+      .form-newsletter {
+        @include d_flex(column, flex-start, stretch, nowrap, false, $s_3);
+        button.submite{
+              cursor: no-drop;
+                        background-color: $clr_secondary_light;
+
+        }
+         input.submite{
+       opacity: 0;
+       height: 0;
+       visibility: hidden;
+       padding: 0;
+
+        }
+      }
+    }
+    @include mq("md") {
+      .col-newsletter {
+        order: -1;
+        min-width: 100%;
+      }
+      .col-support {
+        order: 3;
+      }
+      .col-contact {
+        order: 4;
+      }
+    }
+  }
+  @media (max-width: 1440px) {
+    padding-inline: $s_10;
+  }
+  @include mq("md") {
+    padding: $s_5;
+  }
+}
+#success{
+  color: $clr_primary_main;
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+// white-space: nowrap;
+  
+}

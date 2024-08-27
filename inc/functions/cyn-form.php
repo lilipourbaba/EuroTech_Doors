@@ -1,61 +1,99 @@
 <?php
+
 /**
  * register forms
  * 
  * 
  */
 
-add_action('wp_ajax_send_contact_form', 'cyn_send_contact_form');
-add_action('wp_ajax_nopriv_send_contact_form', 'cyn_send_contact_form');
+add_action('wp_ajax_cyn_contact_us_form', 'cyn_contact_us_form');
+add_action('wp_ajax_nopriv_cyn_contact_us_form', 'cyn_contact_us_form');
 
-function cyn_send_contact_form()
+
+function cyn_contact_us_form()
 {
+    list(
+        'describe' => $describe,
+        'email' => $email,
+        'number' => $number,
+        'name' => $name,
 
+        '_nonce' => $_nonce,
+    ) = $_POST;
 
-    wp_send_json($_POST);
+    $created_post = wp_insert_post([
+        'post_type' => 'form',
+        'post_title' => $email,
+        'tax_input' => [
+            'form-cat' => [
+                get_term_by('slug', 'contact-us', 'form-cat')->term_id
+            ]
+        ],
+    ]);
 
-    if (!wp_verify_nonce($_POST['_nonce'], 'ajax-nonce'))
-        return wp_send_json_error(['verify_nonce' => false], 403);
-
-
-    $data = $_POST['data'];
-    $dbData = array(
-        'name' => sanitize_text_field($data['name']),
-        'family' => sanitize_text_field($data['family']),
-        'email' => sanitize_text_field($data['email']),
-        'describe' => sanitize_textarea_field($data['describe']),
+    add_post_meta($created_post, 'number', sanitize_text_field($number));
+    add_post_meta($created_post, 'name', sanitize_text_field($name));
+    add_post_meta($created_post, 'email', sanitize_email($email));
+    add_post_meta($created_post, 'describe', sanitize_textarea_field($describe));
+    $emailTo = "sales@eurotech.com";
+    $subject = "Eurotech Contact Us form";
+    $msgContent =
+        "My name: " . $name . "   .     
+        " .
+        "My Email: " . $email . "   .     
+        " .
+        "My Phone is " . $number . "  .    
+     " .
+        "Message: " . $describe;
+    $sendEmail = wp_mail(
+        $emailTo,
+        $subject,
+        $msgContent
     );
-
-    $msg_content = "
-                name: " . $dbData['name'] . "\n
-                family: " . $dbData['family'] . "\n
-                email: " . $dbData['email'] . "\n
-                massage: " . $dbData['describe'] . "
-            ";
-    $new_post = array(
-        'post_type' => $GLOBALS["form-post-type"],
-        'post_title' => $dbData['name'],
-        'post_content' => $msg_content,
-        'post_status' => 'publish',
-        'tax_input' => ['form-cat' => [get_term_by('slug', 'contact-us', 'form-cat')->term_id]],
-        'post_author' => 1,
-    );
-
-    $insert_post = wp_insert_post($new_post);
-
-    if (is_wp_error($insert_post))
-        return wp_send_json_error(['insert_row' => false], 500);
-
-
-    $send_email = wp_mail(
-        'lili@gmail.com',
-        'A Massage from: ' . $dbData['name'],
-        $msg_content
-    );
-
-    if ($send_email == false)
-        return wp_send_json_error(['name' => false], 500);
+    if ($sendEmail == false)
+        return wp_send_json_error(['send_email' => false], 500);
 
     return wp_send_json(['success' => true], 201);
 }
+
+add_action('wp_ajax_cyn_subscribe_form', 'cyn_subscribe_form');
+add_action('wp_ajax_nopriv_cyn_subscribe_form', 'cyn_subscribe_form');
+function cyn_subscribe_form()
+{
+    list(
+        'email' => $email,
+        '_nonce' => $_nonce,
+    ) = $_POST;
+
+    $created_post = wp_insert_post([
+        'post_type' => 'form',
+        'post_title' => $email,
+        'tax_input' => [
+            'form-cat' => [
+                get_term_by('slug', 'subscribe', 'form-cat')->term_id
+            ]
+        ],
+    ]);
+
+
+
+    add_post_meta($created_post, 'email', sanitize_email($email));
+    $emailTo = "sales@eurotech.com";
+    $subject = "Eurotech subscribe form";
+    $msgContent =
+        "My Email: " . $email;
+    $sendEmail = wp_mail(
+        $emailTo,
+        $subject,
+        $msgContent
+    );
+    if ($sendEmail == false)
+        return wp_send_json_error(['send_email' => false], 500);
+
+    return wp_send_json(['success' => true], 201);
+}
+
+
+
+
 

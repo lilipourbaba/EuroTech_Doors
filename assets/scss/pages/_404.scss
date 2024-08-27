@@ -22,17 +22,14 @@
       padding: $s_4 $s_5;
       margin: $s_6;
       @include fs("h3");
-      @include icon("\ea95");
+      @include make_icon_after("\ea95");
       @include d_flex(row, center, center, nowrap, false, $s_2);
       cursor: pointer;
     }
   }
-}
-
-@include mq("md") {
-  .error-page {
+  @include mq("md") {
     background-position: top;
-    background-size: 180%;
+    background-size: 100%;
     .error-text {
       width: 85%;
 
@@ -41,8 +38,11 @@
       }
       a {
         width: 100%;
-        padding: $s_5;
       }
     }
   }
+    @include mq("md") {
+  height: auto;
+
+    }
 }

@@ -1,129 +1,155 @@
 @use "../utils/" as *;
 
 .about-us {
-  .banner {
-    width: 100%;
-    height: 80vh;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    @include d_flex(row, start, center, nowrap, false, 0);
-    p {
-      color: $clr_natural_1;
-      @include fs("title-s");
-      width: 50%;
-      padding-left: $s_10;
+  .about-us__hero {
+
+    .about-us__hero__items {
+      background-position: top;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      p {
+        color: $clr_natural_1;
+        @include fs("title-s");
+        width: 60%;
+        padding-left: $s_10;
+        @include mq("lg") {
+          width: 100%;
+        }
+        @include mq("md") {
+          display: none;
+        }
+      }
+      @include mq("md") {
+        height: 30vh;
+      }
+    }
+    .hero__title__mobile {
+      display: none;
+      @include mq("md") {
+        display: block;
+      }
     }
   } //banner
-  .about-content {
-    display: grid;
-    padding: $s_7 0;
-    .about_img {
-      grid-column-start: 1;
-      grid-column-end: 3;
-      width: 100%;
-    }
-  } //about-content
-  .about-us-content {
-    @include d_flex($gap: $s_7, $a_i: stretch);
-    padding: $s_7 0;
-    .about-video {
-      object-fit: cover;
-      width: 50%;
-      aspect-ratio: 14 / 8;
-    }
-    .company {
-      @include d_flex(column, space-evenly, stretch, nowrap, true, $s_5);
-    }
-    .statistics {
+
+  .container {
+    @include d_flex(column, center, center, nowrap, false, $s_10);
+    margin-bottom: $s_10;
+    .about-content {
       display: grid;
-      grid-template-rows: repeat(2, 1fr);
-      grid-template-columns: repeat(2, 1fr);
-      gap: $s_4;
-      .statistic {
-        @include d_flex(column, start, center, nowrap, true, $s_3);
-        background-color: $clr_secondary_text;
-        span {
-          color: $clr_secondary_light;
-        }
+      gap: $s_8;
+      p {
+        @include fs("body");
       }
-    }
-    @include mq("md") {
-      height: auto;
-    }
-  } //about-us-content
-  .about-us-steps {
-    @include d_flex(row, center, center, nowrap, false, $s_7);
-    .eurotech_img {
-      width: 42%;
-      @include mq("md") {
+      .about_img {
+        grid-column-start: 1;
+        grid-column-end: 3;
         width: 100%;
-        aspect-ratio: 1 / 1;
       }
-    }
-    .steps {
-      @include make_icon(" ");
-      .step {
-        @include d_flex(row, start, center, nowrap, false, 0);
-        .step_padding {
-          padding: $s_10;
+      .order {
+        @include mq("md") {
+          order: 3;
         }
-        h5 {
-          color: $clr_secondary_light;
+      }
+    } //about-content
+
+    .about-us-content {
+      @include d_flex($gap: $s_7, $a_i: stretch);
+      .about-video {
+        object-fit: cover;
+        width: 50%;
+        aspect-ratio: 14 / 8;
+        z-index: -1;
+      }
+      .company {
+        @include d_flex(column, space-evenly, stretch, nowrap, true, $s_5);
+        width: 100%;
+        p {
+          @include fs("body");
         }
-        .step-icon {
-          background-color: $clr_secondary_dark;
-          padding: $s_3;
-          z-index: 2;
-          img {
-            font-size: $s_11;
+        .statistics {
+          display: grid;
+          grid-template-rows: repeat(2, 1fr);
+          grid-template-columns: repeat(2, 1fr);
+          gap: $s_4;
+
+          .statistic {
+            @include d_flex(column, start, center, nowrap, true, 0);
+            background-color: $clr_secondary_text;
+            padding: $s_5;
+
+            > h2 {
+              font-size: 40px;
+              font-weight: 600;
+
+              @include mq("lg") {
+                @include fs("h1");
+              }
+            }
+            span {
+              color: $clr_secondary_light;
+            }
+          }
+          @include mq("md") {
+            grid-template-columns: auto;
+            text-align: center;
           }
         }
-      } //step
-    }
-  } //steps
-  .steps::before {
-    position: absolute;
-    width: 0;
-    height: 80%;
-    right: 48%;
-    border-right: 3px dashed #7d8181;
-    margin-top: 15vh;
-    @include mq("lg") {
-      display: none;
-    }
-  } //about-us-steps
+      }
+      @include mq("md") {
+        height: auto;
+      }
+    } //about-us-content
+
+    .about-us-steps {
+      @include d_flex(row, center, center, nowrap, false, $s_7);
+      .eurotech_img {
+        width: 45%;
+        aspect-ratio: 9 / 12;
+        @include mq("lg") {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+        }
+      }
+      .steps {
+        .step {
+          @include d_flex(row, start, center, nowrap, false, 0);
+          .step_padding {
+            padding: $s_2;
+          }
+          h5 {
+            color: $clr_secondary_light;
+          }
+          .step-icon {
+            background-color: $clr_secondary_dark;
+            padding: $s_2;
+            width: 12%;
+            z-index: 2;
+            display: flex;
+          }
+        } //step
+      }
+      @include mq("lg") {
+        flex-direction: column;
+      }
+    } //steps
+
+    .steps::before {
+      position: absolute;
+      width: 0;
+      height: 70%;
+      right: 50%;
+      border-right: 3px dashed #7d8181;
+
+      @include mq("lg") {
+        display: none;
+      }
+    } //about-us-steps
+  }
 } //.about-us
+
 @include mq("md") {
   .about-us .container * {
     width: 100% !important;
     flex-direction: column !important;
-  }
-  .about-us {
-    .banner {
-      height: 40vh;
-      p {
-        display: none;
-      }
-    }
-    .about-us-content {
-      gap: $s_2;
-    }
-    .about-content {
-      display: flex;
-      .about_img {
-        padding: $s_3 0;
-      }
-      .order {
-        order: 3;
-      }
-    }
-    .statistics {
-      grid-template-columns: auto !important;
-      text-align: center;
-      .statistic {
-        padding: $s_2;
-      }
-    }
   }
 }

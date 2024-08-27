@@ -1,9 +1,10 @@
 @use "../../utils/" as *;
-.about-steps-slider {
+.about-steps-slider,
+.swiper {
+  z-index: -1;
   .steps {
     .step {
       padding: $s_4;
-
       h5 {
         color: $clr_secondary_light;
       }
@@ -30,5 +31,8 @@
   .swiper-button-prev:after {
     color: $clr_secondary_dark;
     @include fs("h3");
+  }
+  @include mq("md") {
+    display: block;
   }
 } //about-us-steps

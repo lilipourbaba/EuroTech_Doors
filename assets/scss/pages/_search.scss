@@ -1,0 +1,105 @@
+@use "../utils/" as *;
+main.search-result-page {
+  .banner {
+    width: 100%;
+    height: 70vh;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    @include d_flex(row, start, center, nowrap, false, 0);
+    @include mq("lg") {
+      background-size: unset;
+    }
+    @include mq("md") {
+      max-height: px_to_rem(300);
+      background-size: cover;
+    }
+    p {
+      width: 100%;
+      padding-block: 18% 10%;
+      color: $clr_natural_1;
+      @include fs("title-s");
+      padding-left: $s_10;
+      @include mq("md") {
+        display: none;
+      }
+    }
+  }
+  .title-mobile-search {
+    display: none;
+    margin-top: $s_3;
+    @include fs("h2");
+    @include mq("md") {
+      display: block;
+    }
+  }
+  .search-result {
+    .search_result_head {
+      @include d_flex(row, space-between, center, nowrap, false, $s_5);
+      ul {
+        @include d_flex(row, start, center, nowrap, false, $s_10);
+        overflow: auto;
+        max-width: 100%;
+        &::-webkit-scrollbar {
+          width: 0px;
+        }
+
+        li {
+          white-space: nowrap;
+          padding: $s_3;
+        }
+        @include mq("md") {
+          gap: $s_4;
+        }
+      }
+      @include mq("md") {
+        flex-direction: column;
+      }
+    }
+    .product-result,
+    .blog-result {
+      h2 {
+        margin-block: px_to_rem(28);
+        span {
+          color: $clr_primary_dark;
+        }
+      }
+    }
+    .product-result {
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(px_to_rem(300), 1fr));
+        gap: px_to_rem(24) px_to_rem(28);
+        .product-card {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+    }
+    .blog-result {
+      width: 80%;
+      .blog-post img {
+        height: auto;
+        width: 30%;
+        margin-block: 5px;
+             @include mq("md") {
+        width: 45%;
+      }
+      }
+      @include mq("md") {
+        width: 100%;
+      }
+    }
+    .not-found-search {
+      .result-cant-found {
+        margin-block: px_to_rem(240);
+        @include d_flex(column, flex-start, center);
+        > div {
+          @include fs("title-s");
+          color: $clr_primary_dark;
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}

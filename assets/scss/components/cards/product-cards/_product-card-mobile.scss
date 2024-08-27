@@ -1,0 +1,55 @@
+@use "../../../utils/" as *;
+
+.sidebar-products {
+  flex-direction: column;
+  .product-card {
+    padding: $s_5;
+    background-color: $clr_bg_paper;
+    margin-bottom: $s_3;
+          transition: all 0.8s ease-in-out;
+
+      &:hover {
+        filter: drop-shadow(0px 0 3px #858585);
+        background-color: #d9d9d9;
+      }
+    img {
+      aspect-ratio: 1/1;
+      width: 40%;
+    }
+    .card {
+      @include d_flex(row, start, center, nowrap, false, $s_4);
+      max-width: 100%;
+      overflow: hidden;
+      & > a {
+        width: 43%;
+      }
+      @include mq("md") {
+      }
+    }
+    .detail {
+      display: block;
+      p {
+        @include fs("h3");
+        @include mq("md") {
+          @include fs("h4");
+        }
+      }
+      span {
+        display: flex;
+        justify-content: space-between;
+      }
+      i {
+        @include mq("md") {
+          display: none;
+        }
+      }
+      .cat {
+        @include fs("body-s");
+        display: flex;
+        color: $clr_secondary_light;
+        line-height: 30px;
+        justify-content: space-between;
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+@use "../../../utils/" as *;
+//card of single product
+.products {
+  @include d_flex(row, start, center, nowrap, true, $s_6);
+  .product-card {
+    min-width: 48%;
+    max-width: 48%;
+    img {
+      width: 100%;
+      transition: all 0.8s ease-in-out;
+
+      &:hover {
+        filter: drop-shadow(0px 0 3px #858585);
+      }
+
+      @include mq("md") {
+        aspect-ratio: 1/1;
+      }
+    }
+    .detail {
+      @include d_flex(row, center, center, nowrap, false, $s_3);
+      margin-top: $s_4;
+      .cat-name {
+        display: none;
+        @include mq("md") {
+          display: flex;
+        }
+      }
+      .paragraph {
+        -webkit-line-clamp: 1;
+      }
+
+      i {
+        @include mq("md") {
+          display: none;
+        }
+      }
+      @include mq("md") {
+        display: block;
+      }
+    }
+    @include mq("md") {
+      max-width: 100%;
+      padding: $s_4;
+      background-color: $clr_bg_paper;
+      margin-block: $s_4;
+    }
+  }
+  @include mq("md") {
+    display: block;
+    .card {
+      @include d_flex(row, center, center, nowrap, true, $s_4);
+      img {
+        width: 30%;
+      }
+      a {
+        display: flex;
+      }
+    }
+    .detail {
+      width: 60%;
+      .cat {
+        display: flex;
+        color: $clr_secondary_light;
+        line-height: 30px;
+      }
+    }
+  }
+}
+
+.cat {
+  // transition: all 0.3s ease-in-out;
+  &:hover i::before {
+    opacity: 0.7;
+    // filter: brightness(0.5)
+  }
+  i::before {
+    background-color: $clr_natural_9;
+    color: $clr_natural_1;
+    padding: $s_2;
+      transition: all 0.5s ease-in-out;
+
+  }
+}

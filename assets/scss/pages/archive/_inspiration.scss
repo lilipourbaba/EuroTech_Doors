@@ -1,0 +1,66 @@
+@use '../../utils/' as *;
+
+.inspiration {
+  &__gallery {
+    margin-block-start: $s_8;
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: $s_6;
+      @include mq('md') {
+        gap: $s_4;
+      }
+      &__item {
+        min-width: 100%;
+        max-height: 380px;
+        &__img {
+          @include d_flex();
+          height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+   transition: all 0.8s ease-in-out;
+
+      &:hover {
+                transform: scale(1.02);
+      }
+          }
+        }
+        &:nth-child(6n - 5),
+        &:nth-child(6n - 1) {
+          min-height: calc((2 * 380px) + $s_6);
+          grid-column: 6 span;
+          grid-row: 2 span;
+        }
+        &:nth-child(6n - 2),
+        &:nth-child(6n - 1) {
+          margin-block-start: calc($s_8 - $s_6);
+          @include mq('md') {
+            margin-block-start: unset;
+          }
+        }
+        &:nth-child(6n - 4),
+        &:nth-child(6n - 2) {
+          grid-column: 4 span;
+        }
+        &:nth-child(6n - 3),
+        &:nth-child(6n) {
+          grid-column: 4 span;
+        }
+      }
+      @include mq('md') {
+        display: flex;
+        flex-direction: column;
+        .inspiration__gallery__content__item {
+          max-height: unset;
+          &:nth-child(6n - 5),
+          &:nth-child(6n - 1) {
+            min-height: unset;
+          }
+        }
+      }
+    }
+  }
+}

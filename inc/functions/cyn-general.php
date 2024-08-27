@@ -73,29 +73,53 @@ function getPostViews($post_id)
 {
     $count_key = 'post_view';
     $count = get_post_meta($post_id, $count_key, true);
-    if ($count == '') {
-        $count = 0;
-        delete_post_meta($post_id, $count_key);
-        add_post_meta($post_id, $count_key, '0');
-        return "0 view";
-    }
-    return $count . ' view';
+
+    if (is_string($count) && $count != '')
+        return $count;
+
+    return 0;
 }
 
-function setPostViews($postID)
+function setPostViews($post_id)
 {
-    $count_key = 'post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if ($count == '') {
-        $count = 0;
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
+    $count_key = 'post_view';
+    $count = get_post_meta($post_id, $count_key, true);
+    if (is_string($count) && $count != '') {
+        update_post_meta($post_id, $count_key, (int) $count + 1);
     } else {
-        $count++;
-        update_post_meta($postID, $count_key, $count);
+        update_post_meta($post_id, $count_key, '1');
     }
+    return $count;
+
+
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function render_social_media($social_media_link, $address)
+{
+    $address_stable = get_stylesheet_directory_uri() . '/assets/img/';
+    if (empty ($social_media_link))
+        return;
+
+
+    printf("<a href='%s'><div class='social-media-item'><img src='%s'></div></a>", $social_media_link, $address_stable . $address);
+}
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
 
 
@@ -134,14 +158,13 @@ function the_pagination()
         $links[] = $paged + 1;
     }
 
-    echo '<ul class="pagination " itemscope itemtype="http://schema.org/SiteNavigationElement/Pagination">' . "\n";
+    echo '<ul class="pagination container " itemscope itemtype="http://schema.org/SiteNavigationElement/Pagination">' . "\n";
     /** Previous Post Link */
     if (get_previous_posts_link())
         printf(' <li class="page-item">%s</li>
     ' . "\n", get_previous_posts_link('
     <span aria-hidden="true" class="page-link ripple">&laquo;</span>
-    <span class="sr-only">Previous</span>
-    '));
+     '));
     /** Link to first page, plus ellipses if necessary */
     if (!in_array(1, $links)) {
         $class = 1 == $paged ? '  class="page-item active"' : '';
@@ -166,8 +189,6 @@ function the_pagination()
     if (get_next_posts_link())
         printf('<li class="page-item ">%s</li>
     ' . "\n", get_next_posts_link('<span aria-hidden="true" class="page-link ripple">&raquo;</span>
-    <span class="sr-only">Next</span>'));
+ '));
     echo '</ul>' . "\n";
-
-
 }

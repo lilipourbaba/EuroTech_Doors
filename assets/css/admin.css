@@ -1,8 +1,22 @@
 @font-face {
-  font-family: Peyda;
-  src: url(../fonts/peyda/woff/PeydaWebFaNum-Medium.woff);
+	font-family: Poppins;
+	src: url(../fonts/Poppins/woff2/Poppins-Medium.woff2);
 }
 
 *:not(i, .ab-icon) {
-  font-family: Peyda !important;
+	font-family: Poppins !important;
+}
+
+.user-profile-picture {
+	display: none;
+}
+
+#information table {
+	border-spacing: 0.25rem;
+	width: 100%;
+}
+
+#information td {
+	padding: 0.5rem;
+	border: 1px solid #ddd;
 }

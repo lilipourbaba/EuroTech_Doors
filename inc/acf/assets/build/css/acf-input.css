@@ -146,6 +146,20 @@
   box-sizing: border-box;
   position: relative;
 }
+#acf-group_65eefbcc96c1a {
+  padding: 0 10%;
+.acf-field {
+    clear: none;
+  }
+  .acf-fields > .acf-field {
+    width: 50%;
+    float: left;
+    border-width:5px ;
+  }
+  .acf-fields > .acf-field:first-child{
+    border-top:5px solid #EAECF0;
+
+  }}
 
 .acf-field {
   margin: 15px 0;

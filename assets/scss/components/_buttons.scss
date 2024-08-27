@@ -1,18 +1,46 @@
 @use "../utils/index" as *;
 .submit {
+  @include d_flex(row, center, center, nowrap, true, $s_3);
   float: right;
-  padding: $s_3 $s_6;
+  cursor: pointer;
+  padding: $s_4 $s_9;
   background-color: $clr_primary_main;
   @include fs("caption");
   i {
     @include fs("caption");
+    display: flex;
   }
 
   @include mq("md") {
-    width: 100%;
     @include d_flex($a_i: center, $gap: $s_3);
   }
 }
-button{
-  
+.button {
+  &-primary {
+    background-color: $clr_primary_main;
+    color: $clr_primary_text;
+    padding: $s_4 $s_5;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: $t_1;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &-secondary {
+    color: $clr_text_contrast;
+    background-color: $clr_natural_9;
+    padding: $s_4 $s_5;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: $t_1;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

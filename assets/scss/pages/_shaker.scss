@@ -1,0 +1,72 @@
+@use "../utils/" as *;
+.shaker-product {
+  padding-top: 10vh;
+  margin-inline: 20%;
+  .membrance-card {
+    @include d_flex(row, center, center, nowrap, false, $s_14);
+    margin-block: $s_14;
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+      .gallery {
+        flex-direction: row-reverse;
+      }
+      @include mq("lg") {
+        flex-direction: column !important;
+      }
+    }
+    p.hide{
+      @include fs("h2");
+    }
+    .gallery {
+      @include d_flex(row, flex-end, center, nowrap, true, $s_14);
+      width: 60%;
+      img{
+        width: 50%;
+      }
+      @include mq("lg") {
+        width: 100%;
+        justify-content: space-around;
+        gap: 0;
+      }
+    }
+    .card {
+      margin-block: $s_10;
+      text-align: center;
+      .card-margin {
+        margin-top: $s_12;
+      }
+    }
+    .title {
+      @include d_flex(column, center, start, nowrap, false, $s_12);
+      @include fs("h1");
+      width: 30%;
+      .more {
+        padding: $s_4 $s_3;
+        background-color: $clr_secondary_dark;
+        color: $clr_primary_light;
+        @include fs("body");
+        text-align: center;
+        @include mq("lg") {
+          width: 100%;
+        }
+      }
+      @include mq("lg") {
+        width: 100%;
+      }
+    }
+    @include mq("lg") {
+      flex-direction: column;
+      gap: $s_4;
+    }
+  }
+  @include mq("xl") {
+    margin: 0;
+      padding-top: 2vh;
+
+  }
+}
+.shaker-content{
+      text-align: left;
+      div ,p{
+        margin-block: 1.5em
+      }}

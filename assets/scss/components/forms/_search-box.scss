@@ -8,11 +8,18 @@
     padding: $s_3 $s_4;
     button {
       background-color: $clr_primary_main;
-      padding: $s_4;
+      padding: $s_3;
       border: 0;
     }
-    ::placeholder {
+    input {
+      flex: 1;
+    }
+    &::placeholder {
       color: $clr_secondary_light;
     }
   }
+  @include mq("md") {
+    width: 100%;
+  }
 }
+

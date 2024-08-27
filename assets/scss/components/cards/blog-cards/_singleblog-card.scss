@@ -4,21 +4,28 @@
     .blog-posts {
       @include d_flex(row, start, center, nowrap, false, $s_3);
       margin-bottom: $s_8;
+      background-color: $clr_bg_paper;
+      padding: $s_3;
     }
     .post-main {
       width: 70%;
     }
     img {
       height: 15vh;
-      width: 30%;
+      width: 43%;
       aspect-ratio: auto 120 / 95;
     }
     .postmeta {
       display: block;
       @include fs("caption");
       color: $clr_secondary_light;
-      div {
-        @include d_flex(row, start, center, nowrap, false, $s_5);
+      div,
+      span {
+        @include d_flex(row, start, center, nowrap, false, $s_2);
+        i::before {
+          color: black;
+          @include fs("h4");
+        }
       }
     }
     .post-detail {

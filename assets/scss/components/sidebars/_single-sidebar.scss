@@ -1,0 +1,40 @@
+@use "../../utils/" as *;
+
+.single-sidebar {
+  width: 35%;
+  @include d_flex(column, start, center, wrap, false, $s_12);
+  div {
+    width: 100%;
+  }
+  h3 {
+    padding-bottom: $s_4;
+  }
+  .tags {
+    @include d_flex(row, start, center, wrap, false, $s_3);
+    li {
+      background-color: $clr_bg_paper;
+      padding: $s_3;
+    }
+  }
+  a.active li {
+    border-bottom: $b_1;
+  }
+  @include mq("md") {
+    width: 100%;
+  }
+}
+// .catergories {
+//   li.current-cat {
+//     @include make_icon("\e9a6");
+//   }
+//   li.current-cat::before {
+//     color: $clr_primary_main;
+//   }
+//   li {
+//     width: 100%;
+//     padding: $s_4;
+//     background-color: $clr_bg_paper;
+//     margin-top: $s_3;
+//     margin-bottom: 0;
+//   }
+// }

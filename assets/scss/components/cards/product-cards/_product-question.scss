@@ -1,0 +1,20 @@
+// @use "../../../utils/" as *;
+// //qustion in property from single product
+// #tab4Content {
+//   flex-direction: column;
+//   div {
+//     width: 100%;
+//     margin: $s_3;
+//     border-bottom: $b_2;
+//     .question {
+//       @include fs("h3");
+//       padding-left: 1%;
+//     }
+//     .answer {
+//       color: $clr_secondary_light;
+//     }
+//     @include mq("md") {
+//       margin: 0;
+//     }
+//   }
+// }

@@ -1,0 +1,28 @@
+@use "../../utils/" as *;
+.header-search {
+  flex: 1 1 auto;
+  width: 60%;
+  form {
+    @include d_flex(row, start, stretch, nowrap, false, $s_4);
+    padding: $s_3;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    button {
+      background-color: $clr_primary_main;
+      padding: $s_2;
+      border: 0;
+      cursor: pointer;
+    }
+    input {
+      flex: 1 1 auto;
+      height: auto;
+      color: $clr_primary_light;
+      &::placeholder {
+        color: $clr_primary_light;
+      }
+    }
+  }
+  @include mq("md") {
+    display: none;
+  }
+}

@@ -1,0 +1,171 @@
+@use "../../../utils/" as *;
+// property in single product
+.property_tab {
+  width: 100%;
+
+  .tab-content {
+    span {
+      padding: $s_4;
+      width: 100%;
+      border: 0;
+      margin-bottom: $s_2;
+      height: 52px;
+      @include d_flex(column, start, center, nowrap, true, $s_2);
+    }
+    p {
+      text-align: left;
+      line-height: 1.9;
+      letter-spacing: 0.4px;
+      color: #202238;
+    }
+
+    @include mq("md") {
+      flex-direction: column;
+    }
+  }
+}
+
+.variable {
+  @include d_flex(row, start, center, nowrap, true, $s_2);
+  margin-top: $s_2;
+  @include mq("xl") {
+    margin-bottom: $s_1;
+  }
+  div {
+    @include d_flex(column, start, center, nowrap, true, $s_2);
+    padding: $s_3;
+    width: 100%;
+    transition: all 0.8s ease-in-out;
+
+    &:hover {
+      filter: drop-shadow(0px 0 3px #858585);
+    }
+    @include mq("xl") {
+      padding: $s_2;
+    }
+  }
+  .Variable-name {
+    background-color: $clr_secondary_light;
+    color: $clr_natural_1;
+  }
+  .Variable-value {
+    background-color: $clr_secondary_text;
+    color: $clr_secondary_light;
+  }
+  @include mq("md") {
+    flex-direction: column;
+  }
+}
+
+.product-pagination {
+  @include d_flex(row, space-between, center, nowrap, false, 0);
+  a {
+    @include d_flex(row, center, center, nowrap, false, $s_1);
+    padding: $s_3;
+    background-color: $clr_secondary_dark;
+    color: $clr_natural_1;
+    margin-top: $s_8;
+    @include mq("md") {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  @include mq("md") {
+    flex-direction: column-reverse;
+    gap: $s_3;
+  }
+}
+.property {
+  .property-tab {
+    padding: $s_1 0;
+    border-bottom: $b_1;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.8s ease-in-out;
+    &::after {
+      content: "\eb75";
+      line-height: 1;
+      @include fs("h3");
+      font-family: "iconsax" !important;
+    }
+  }
+
+  .property-Content {
+
+    transition: all 0.5s ease-in-out;
+    color: $clr_secondary_light;
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+    &>div{
+          padding-block: $s_6;
+
+    }
+    &.description {
+      ul {
+        margin-left: 2%;
+        li {
+          list-style: disc;
+        }
+      }
+    }
+    &.catalog div {
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        width: 30%;
+        padding: 10px;
+        @include d_flex($a_i: center, $j_c: center);
+        background-color: $clr_primary_main;
+        span {
+          width: 30%;
+          @include fs("body");
+          @include mq("md") {
+            @include fs("caption");
+            padding: $s_4;
+            align-items: center;
+          }
+        }
+        @include mq("md") {
+          width: 100%;
+         }
+      }
+        @include mq("md") {
+           flex-direction: column;
+        }
+    }
+    &.faq {
+      flex-direction: column;
+      div {
+        width: 100%;
+        margin: $s_3;
+        border-bottom: $b_2;
+        .question {
+          @include fs("h3");
+          padding-left: 1%;
+        }
+        .answer {
+          color: $clr_secondary_light;
+        }
+        @include mq("md") {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &.active {
+    .property-Content {
+      height: 100%;
+      visibility: visible;
+      opacity: 1;
+    }
+    .property-tab {
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

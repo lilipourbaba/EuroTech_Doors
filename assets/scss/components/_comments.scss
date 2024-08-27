@@ -5,7 +5,15 @@
   flex-direction: column-reverse;
   .comment-respond {
     .comment-form {
+      display: flex;
+      flex-direction: column;
       padding: $s_4;
+      .comment-text{
+        order: 3;
+      }
+      .form-submit{
+        order: 4;
+      }
       @include mq("md") {
         padding: 0;
       }
@@ -40,7 +48,7 @@
         transition: all ease-in-out 0.6s;
       }
     }
-    .input-box:hover .comment-input {
+    .comment-input:focus {
       border-bottom: $b_1;
     }
     .input-box:hover lable {
@@ -58,6 +66,9 @@
     .comment-author {
       display: flex;
       gap: $s_2;
+      img {
+        border-radius: 50%;
+      }
     }
     .says {
       display: none;

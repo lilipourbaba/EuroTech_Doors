@@ -1,0 +1,32 @@
+@use "../../utils/" as *;
+.blog-archive {
+  .sidebar {
+    width: 37%;
+    h3 {
+      padding: $s_6 0;
+    }
+    .today-pic {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: $s_4;
+      a {
+        display: flex;
+      }
+      h3 {
+        padding: $s_6 0;
+      }
+      img {
+        width: 100%;
+      }
+      @include mq("md") {
+        gap: $s_3;
+      }
+    }
+    @include mq("md") {
+      width: 100%;
+      border-bottom: $b_3;
+      margin-block-end: $s_14;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <?php get_header() ?>
 <?php
-$post_id = isset($args['post_id']) ? $args['post_id'] : get_the_ID();
+$post_id = isset ($args['post_id']) ? $args['post_id'] : get_the_ID();
 $about_us = get_field('about_us');
 $author_name = get_the_author_meta('display_name', get_post_field('post_author', get_the_ID()));
 ?>
@@ -12,7 +12,7 @@ $author_name = get_the_author_meta('display_name', get_post_field('post_author',
 		<div class="single-sidebar">
 			<?php
 			get_template_part(
-				'templates/components/cards/singleblog-sidebar',
+				'templates/components/sidebar/singleblog-sidebar',
 				null,
 			);
 			?>
@@ -25,7 +25,7 @@ $author_name = get_the_author_meta('display_name', get_post_field('post_author',
 					<?php echo $about_us ?>
 				</p>
 
-				<h3 class="mb-hide">categories</h3>
+				<h3>categories</h3>
 				<ul class="cat">
 					<!-- <li class="current-cat"><i class="iconsax" icon-name="flash-1"></i>
 						<?= get_cat_name($category_id = 4);
@@ -44,13 +44,13 @@ $author_name = get_the_author_meta('display_name', get_post_field('post_author',
 					) ?>
 				</ul>
 			</div>
-			<h2>
+			<h1>
 				<?= get_the_title($post_id) ?>
-			</h2>
+			</h1>
 			<div class="postmeta">
 
 				<span class="meta-comment meta"><i class="iconsax" icon-name="eye"></i>
-					<?php echo getPostViews(get_the_ID()); ?>
+					<?= setPostViews(get_the_ID()); ?> view
 				</span>
 
 				<div>
@@ -58,7 +58,7 @@ $author_name = get_the_author_meta('display_name', get_post_field('post_author',
 						<?= get_the_date('d M') ?>
 					</span>.
 					<span class="meta-comment">
-						<?php echo cyn_reading_time(get_the_ID()) . " Read"; ?>
+						<?= cyn_reading_time(get_the_ID()) . " Read"; ?>
 					</span>
 					</span>
 				</div>
@@ -68,7 +68,7 @@ $author_name = get_the_author_meta('display_name', get_post_field('post_author',
 			</div>
 			<div class="single-comment-number">
 				<h3>
-					<?php echo get_comments_number($post_id); ?> comment
+					<?= get_comments_number($post_id); ?> comments
 				</h3>
 			</div>
 			<div class="blog-comments">

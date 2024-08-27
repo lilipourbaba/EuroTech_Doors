@@ -1,62 +1,82 @@
 @use "../utils/" as *;
 .blog-page {
+   .blog__hero {
+    min-width: 100%;
+    height: 70vh;
+    @include mq("lg") {
+      height: 40vh;
+    }
+  }
+  .archive-main {
+    width: 100% !important;
+    .blog-post {
+      img {
+        width: 25% !important;
+        @include mq("md") {
+          width: 38% !important;
+        }
+      }
+    }
+  }
   .blog-archive {
     @include d_flex(row-reverse, start, start, nowrap, false, $s_4);
-
-    li:hover,
     .blog-main {
+      width: 70%;
       .blog-head {
         @include d_flex($j_c: space-between);
-        @include mq("md") {
-          flex-direction: column-reverse;
-          align-items: start;
-        }
         ul {
-          display: -webkit-box;
-          padding: $s_3 0;
-          gap: $s_3;
+          display: flex;
+          padding-block: $s_6;
+          gap: $s_8;
           overflow: auto;
-          max-width: 100%;
+          width: 100%;
           li {
             border-color: rgba(0, 0, 0, 0);
-            transition: all ease-in-out 0.6s;
+            transition: all ease-in-out 1s;
             @include fs("body");
+            white-space: nowrap;
             min-height: 50px;
+            text-align: center;
+            &:hover {
+              transition: all ease-in-out 0.7s;
+              border-bottom: $b_1;
+            }
+            &.current-cat {
+              transition: all ease-in-out 3s;
+              border-bottom: 3px solid $clr_primary_main;
+              @include make_icon("\e9a6");
+              &::before {
+                color: $clr_primary_main;
+              }
+            }
+            a{
+              padding: 30px;
+            }
             i {
               color: $clr_primary_dark;
             }
             @include mq("md") {
               background-color: $clr_bg_paper;
-              padding: $s_4;
+              padding: $s_3 $s_4;
+              @include fs("caption");
             }
           }
-          li.current-cat {
-            border-bottom: $b_1;
-            @include make_icon("\e9a6");
-          }
-          li.current-cat::before {
-            color: $clr_primary_main;
+          @include mq("md") {
+            gap: $s_2;
           }
         }
+        @include mq("md") {
+          flex-direction: column-reverse;
+          align-items: start;
+        }
+      }
+      @include mq("md") {
+        width: 100%;
       }
     }
-    .pagination {
-      margin-bottom: $s_7;
-      .page-numbers {
-        border-bottom: $b_4;
-        padding: $s_2;
-      }
-      .current {
-        border-color: $clr_primary_dark;
-      }
-    }
-  }
-
-  @include mq("md") {
-    .blog-archive {
+    @include mq("md") {
       flex-direction: column-reverse;
-      .postmeta div {
-      }
+      gap:$s_8;
     }
   }
 }

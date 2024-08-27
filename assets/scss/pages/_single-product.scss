@@ -1,0 +1,149 @@
+@use "../utils/" as *;
+.product {
+  padding-top: 18vh;
+  @include d_flex(column, start, center, nowrap, false, $s_12);
+  .single-product {
+    @include d_flex(row, space-between, flex-start, nowrap, true, $s_5);
+    width: 100%;
+    .gallery-slider {
+      display: flex;
+      position: relative;
+      gap: $s_2;
+      width: 50%;
+      .product_gallery {
+        width: 100%;
+        img {
+          aspect-ratio: 670/616;
+                transition: all 0.8s ease-in-out;
+
+      &:hover{
+                              filter: drop-shadow(0px 0 3px #858585);
+
+      }
+          @include mq("md") {
+            width: 100%;
+          }
+        }
+        .buttons {
+          div {
+            right: auto;
+            left: 10%;
+            padding: $s_4 $s_6;
+            &::after {
+              color: white;
+            }
+          }
+          .swiper-button-next {
+            top: 55%;
+            background-color: $clr_secondary_light;
+            @include mq("md") {
+              left: auto;
+              right: 1%;
+              top: 50%;
+            }
+          }
+          .swiper-button-prev {
+            top: 45%;
+            background-color: $clr_secondary_dark;
+            @include mq("md") {
+              left: 1%;
+              top: 50%;
+              max-width: 100%;
+            }
+          }
+        }
+      }
+      .thumbSwiper {
+        position: absolute;
+        right: 2%;
+        margin-block: 2%;
+            max-height: 95%;
+    overflow: auto;
+        .swiper-wrapper {
+          @include d_flex(column, start, start, nowrap, false, $s_5);
+          img {
+            width: 100% !important;
+            height: 60px;
+            object-fit: contain;
+            aspect-ratio: 1/1;
+                @include mq("md") {
+width: 15% !important;          }
+          }
+          @include mq("md") {
+            flex-direction: row;
+          }
+        }
+        @include mq("xl") {
+          left: 38%;
+        }
+        @include mq("md") {
+          position: relative;
+          left: 0;
+        }
+      }
+      @include mq("md") {
+        display: block;
+        width: 100%;
+      }
+    }
+    .product_detail {
+      @include d_flex(column, space-between, normal, nowrap, false, 0);
+      .title {
+        @include d_flex(row, space-between, center, nowrap, false, 0);
+        h1 {
+          @include fs("h2");
+     
+        }
+        span {
+          color: $clr_secondary_light;
+        }
+        .product-title {
+          width: fit-content;
+          white-space: nowrap;
+        }
+        @include mq("md") {
+          flex-direction: row;
+          align-items: start;
+          margin-bottom: $s_5;
+        }
+      }
+      .product-content p {
+        color: $clr_secondary_light;
+      }
+      @include mq("md") {
+        margin-bottom: 0;
+      }
+    }
+    @include mq("md") {
+      padding: 0;
+      flex-direction: column;
+    }
+  }
+  .footer-product {
+    margin-bottom: $s_10;
+    max-width: 100%;
+    overflow: hidden;
+    .like-product {
+      h2 {
+        @include fs("h1");
+        padding: $s_6 0;
+        @include mq("md") {
+          @include fs("h2");
+        }
+      }
+      .products {
+        .product-card {
+          min-width: 22%;
+        }
+        .paragraph {
+          @include fs("h3");
+        }
+      }
+    }
+  }
+  @include mq("md") {
+    margin-top: 0;
+    padding: 0;
+    gap: $s_6;
+  }
+}

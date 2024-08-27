@@ -10,11 +10,27 @@ main.single-post-page {
   }
   .single-blog {
     @include d_flex(row-reverse, start, start, nowrap, false, $s_4);
+    margin-block-start: $s_10;
+    h1{
+      @include fs('h1');
+    }
     @include mq("md") {
       flex-direction: column-reverse;
     }
     .post-main {
       width: 70%;
+         h1{
+      @include fs('h1');
+               @include mq("md") {
+          @include fs("h3");
+         }
+    }
+       h2{
+      @include fs('h2');
+    }
+       h3{
+      @include fs('h3');
+    }
       @include mq("md") {
         width: 100%;
       }
@@ -23,8 +39,13 @@ main.single-post-page {
         @include d_flex($j_c: space-between, $even_column: false);
         @include fs("body-s");
         color: $clr_secondary_light;
-        div {
-          @include d_flex(row, start, start, nowrap, false, $s_1);
+        padding: $s_3 0;
+        div,
+        span {
+          @include d_flex(row, start, center, nowrap, false, $s_1);
+          i {
+            color: $clr_secondary_dark;
+          }
         }
         @include mq("md") {
           flex-wrap: nowrap;
@@ -33,6 +54,8 @@ main.single-post-page {
       }
       //content
       .post-content {
+                  @include d_flex(column, start, start, nowrap, false, $s_4);
+
         width: 100%;
         margin-bottom: $s_6;
         @include fs("body");
@@ -74,7 +97,7 @@ main.single-post-page {
         }
 
         p {
-          text-align: justify;
+          text-align: left;
           @include mq("md") {
             @include fs("body-s");
           }
@@ -84,8 +107,10 @@ main.single-post-page {
   } //*single-blog
 
   .hide ul.cat {
-    @include d_flex(row-reverse, flex-start, start, wrap, false, $s_4);
+    @include d_flex(row-reverse, flex-start, start, nowrap, false, $s_4);
     padding: $s_5 0;
+    overflow: auto;
+    max-width: 100%;
     :active li {
       background-color: $clr_primary_text;
       color: $clr_primary_main;
@@ -95,6 +120,11 @@ main.single-post-page {
       padding: $s_3;
       line-height: $s_10;
       margin-bottom: $s_5;
+      width: 100%;
+      text-align: center;
+      a{
+        white-space: nowrap;
+      }
     }
     li.current-cat {
       background-color: $clr_primary_text;
